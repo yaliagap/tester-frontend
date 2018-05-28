@@ -27,6 +27,19 @@ nav .logo{
     -webkit-transform: translate3d(-50%, -100%, 0);
     transform: translate3d(-50%, -100%, 0);
 }
+.cognitiva-blue {
+	background: #1574bd;
+	color: white;
+}
+.btn.cognitiva-blue:hover {
+	background-color: #2f85c7;
+}
+.btn-large.cognitiva-blue:hover {
+	background-color: #2f85c7;
+}
+.cognitiva-color .dropdown-content li>a, .cognitiva-color .dropdown-content li>span {
+	color: #2f85c7;;
+}
 .snackbar .card{
 	margin-top: 0px;
 }
@@ -193,6 +206,44 @@ nav .logo{
 .flip{
 	transform: rotate(180deg);
 }
-.citas{
-	overflow-y: scroll;
+.tabs.cognitiva-tabs .tab a{
+    color:rgba(0,0,0,0.6);
+} /*Black color to the text*/
+
+.tabs.cognitiva-tabs .tab a:hover {
+    background-color:#eee;
+} /*Text color on hover*/
+
+.tabs.cognitiva-tabs .tab a.active {
+    background-color:white;
+    /*font-weight: bold;*/
+    color:#1574bd;
+} /*Background and text color when a tab is active*/
+
+.tabs.cognitiva-tabs .indicator {
+    background-color:#1574bd;
+} /*Color of underline*/
+
+.ReactTable .rt-thead.-filters .rt-th {
+	overflow: visible;
+}
+.ReactTable .rt-thead .rt-th.-cursor-pointer, .ReactTable .rt-thead .rt-td.-cursor-pointer {
+	    background: rgb(21, 116, 189);
+    color: white;
+    font-weight: bold;
+    border-right: 1px solid #ccc;
+        height: 45px;
+    padding-top: 14px;
+    font-size: 16px;
+}
+.ReactTable .rt-thead.-filters .rt-th {
+	padding: 0px;
+}
+.ReactTable .rt-thead.-filters input, .ReactTable .rt-thead.-filters select {
+	margin-bottom: 2px;
+	box-sizing: border-box;
+    height: 35px;
+}
+.deleteButton {
+	cursor: pointer;
 }

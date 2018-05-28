@@ -7,14 +7,14 @@ export default class Snackbar extends Component{
 			className: 'snackbar animated',
 			texto: '',
 			type:''
-		}
+		};
 		this.colors = {
 			error:'red',
 			success:'green',
 			warning:'yellow'
 		}
 	}
-	showMessage = function (props) {
+	showMessage(props) {
 		this.setState({className:'snackbar animated snackbarDown',texto:props.texto,type:props.tipo});
 		setTimeout(function() {
 			this.setState({className:'snackbar animated snackbarUp'});

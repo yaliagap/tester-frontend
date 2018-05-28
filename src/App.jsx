@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect,Switch} from "react-router-dom";
 //estilos
+import 'react-table/react-table.css'
 import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css/dist/js/materialize.min.js'
 import './App.css';
 import 'animate.css/animate.min.css'
+import PubSub from 'pubsub-js';
 
 //componentes
 import Login from './Comp/Login.jsx';
 import Navbar from './Comp/Navbar.jsx';
 import Main from './Comp/Main.jsx';
-import Test from './Comp/Test.jsx';
 import Sidenav from './Comp/Sidenav.jsx';
-import AsistenteVirtual from './Comp/AsistenteVirtual.jsx';
 import CerrarSesion from './Comp/CerrarSesion.jsx';
 import Snackbar from './Comp/Snackbar.jsx';
-import Parametros from './Comp/Parametros.jsx';
-import Parametro from './Comp/Parametro.jsx';
-import Citas from './Comp/Citas.jsx';
+import Pruebas from './Comp/Prueba/Main.jsx';
+import AsistentesVirtuales from './Comp/AsistenteVirtual/Main.jsx';
 
 //librerias propias 
 import Cookie from './js/Cookie.js';
@@ -27,7 +26,7 @@ class App extends Component {
     super(props);
     window.M = M;
 
-    document.title = 'Innova PI System';
+    document.title = 'Administrador de AVs';
     this.state = {
       sideNavOpen: false,
       contentClassName:'content animated contentNarrow',
@@ -67,6 +66,7 @@ class App extends Component {
         contentClassName: 'content animated contentWide'
       });
     }
+    PubSub.publish('products', this.props.name);
   }
   render() {
     return (
@@ -82,14 +82,11 @@ class App extends Component {
                   <Sidenav open={this.state.sideNavOpen} />
                   <div className={this.state.contentClassName}>
                     <Route exact path="/" component={Main} />
-                    <Route exact path="/asistente-virtual" component={AsistenteVirtual} />
-                    <Route exact path="/citas" component={Citas} />
+                    <Route exact path="/asistentes-virtuales" component={AsistentesVirtuales} />
                     <Route exact path="/cerrar-sesion" component={CerrarSesion} />
-                    <Route exact path="/parametros" component={Parametros} />
-                    <Route exact path="/parametro/:id" component={Parametro} />
-                    <Route exact path="/test" component={Test} /> 
+                    <Route exact path="/pruebas" component={Pruebas} />
                   </div>
-                  {  !Cookie.get('TOKEN2') ? <Redirect to="/login"/> : null }
+                  {  !Cookie.get('TOKEN') ? <Redirect to="/login"/> : null }
                 </div>
                 )
             }}></Route>

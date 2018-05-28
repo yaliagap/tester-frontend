@@ -9,7 +9,7 @@ export default class Navbar extends Component{
 						<i className="material-icons">lightbulb_outline</i>
 					</div>
 					<p>
-						Administrador de Innova <br/> <span className="grey-text">Bienvenido al perfil de administrador </span>
+						Administrador de AVs <br/> <span className="grey-text">Bienvenido al perfil de administrador </span>
 					</p>
 				</div>
 	  	</div>

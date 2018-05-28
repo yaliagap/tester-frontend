@@ -15,7 +15,7 @@ export default class Navbar extends Component{
 	}
 	render(){
 		return (
-			  <nav className="cyan">
+			  <nav className="cognitiva-blue">
 			    <div className="container-fluid nav-wrapper">
 			   	<ul className="left">
 		        	<li><a className="waves-effect waves-light" onClick={this.menu.bind(this)}><i className="material-icons">menu</i></a></li>

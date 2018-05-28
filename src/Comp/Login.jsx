@@ -12,24 +12,30 @@ class Login extends Component{
 			username: '',
 			password: ''
 		}
-    this.handleChange = this.handleChange.bind(this);
+    	this.handleChange = this.handleChange.bind(this);
 	}
 	handleChange (evt) {
-    this.setState({ [evt.target.id]: evt.target.value });
-  }
+    	this.setState({ [evt.target.id]: evt.target.value });
+  	}
 	login(e){
-		this.setState({loading:true})
-		Api.post('/security/adminUsuario2?'+Api.serialize({correo:this.state.username,contrasena:this.state.password}),{},false)
+		var dataSend = new FormData();
+		dataSend.append('username', this.state.username);
+		dataSend.append('password', this.state.password);
+
+		this.setState({loading:true});
+		Api.post('/authenticate',dataSend,false)
 		.then(function (data) {
-			Cookie.set('TOKEN1',data.token);
-			Api.get('/security/login/admin/'+data.token)
-			.then(function (data) {
-				Cookie.set('TOKEN2',data.token)
-				this.setState({loading:false})
+			this.setState({loading:false});
+			console.log(data);
+			if(data.error) {
+				window.root.showMessage('error','Credenciales inválidas');
+			} else {
+				console.log(data.token);
+				Cookie.set('TOKEN',data.token);
 				this.props.history.push('/');
-			}.bind(this));
+			}
 		}.bind(this),function (data) {
-			window.root.showMessage('error',data.error.descripcion);
+			window.root.showMessage('error',data.error);
 			this.setState({loading:false});
 		}.bind(this))
 		e.preventDefault();
@@ -46,9 +52,9 @@ class Login extends Component{
 								<p>Administrador</p><br/>
 								<div className="row">
 									<div className="input-field col s12">
-					          <input id="username" type="email" className="validate" value={this.state.username} onChange={this.handleChange} />
-					          <label htmlFor="username">Correo electrónico</label>
-                    <span className="helper-text" data-error="Ingrese un correo electrónico válido"></span>
+					          <input id="username" type="text" value={this.state.username} onChange={this.handleChange} />
+					          <label htmlFor="username">Usuario</label>
+                    <span className="helper-text" data-error="Ingrese un usuario válido"></span>
 					        </div>
 								</div>
 								<div className="row">

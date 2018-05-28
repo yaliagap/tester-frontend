@@ -1,7 +1,7 @@
 import Cookie from './Cookie.js';
 
 const Api = {
-	url: 'https://pi-innova-dev-r4.mybluemix.net/api',
+	url: process.env.REACT_APP_API_URL,
 	serialize: function(obj){
 		var str = [];
 		for (var p in obj){
@@ -24,17 +24,22 @@ const Api = {
 		      }else if (x.readyState === 4 && x.status === 204){
 		      	resolve()
 		      }else if (x.readyState === 4) {
+		      	console.log("gello");
+		      	console.log(x);
 		      	console.log(x.responseText)
-		      	if (reject) {reject(JSON.parse(x.responseText))}
-		      	window.root.showMessage('error',JSON.parse(x.responseText).error.descripcion)
+		      	//if (reject) {reject(JSON.parse(x.responseText))}
+		      	if (reject) {reject(x.responseText)}
+		      	//window.root.showMessage('error',JSON.parse(x.responseText).error.descripcion)
 		      }
 		    }
 		    x.open(type, Api.url+service, true); // true for asynchronous 
 		    if (auth) {
-		    	x.setRequestHeader('Authorization','Bearer ' + Cookie.get('TOKEN2'));
+		    	x.setRequestHeader('Authorization','Bearer ' + Cookie.get('TOKEN'));
 		    }
-		    x.setRequestHeader('Content-Type', 'application/json');
-		    x.send(JSON.stringify(params));
+		    //x.setRequestHeader('Content-Type', 'application/json');
+		    //x.setRequestHeader('Content-Type', 'multipart/form-data');
+		    //x.send(JSON.stringify(params));
+		    x.send(params);
 		});
 	},
 	get: function (service,auth=true) {
