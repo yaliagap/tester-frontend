@@ -93,6 +93,7 @@ export default class Listar extends Component{
 				    <br/>
 				    <ReactTable
 			          data={this.props.results}
+			          pageSize={this.props.results.length}
 			          filterable
 			          columns={[
 			            {
