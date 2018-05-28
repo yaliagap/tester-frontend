@@ -6,7 +6,7 @@ import Api from '../js/Api.js';
  class CerrarSesion extends Component{
  	constructor(props){
  		super(props);
- 		Api.post('/security/logout')
+ 		Api.post('/logout', {}, true)
  		.then(function (data) {
 	 		Cookie.del('TOKEN');
 	 		this.props.history.push('/login')
@@ -23,5 +23,4 @@ import Api from '../js/Api.js';
 		)
 	}
 }
-
 export default withRouter(CerrarSesion)
