@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import Cookie from '../js/Cookie.js';
-import Api from '../js/Api.js';
+import Cookie from '../../js/Cookie.js';
+import Api from '../../js/Api.js';
 
  class CerrarSesion extends Component{
  	constructor(props){

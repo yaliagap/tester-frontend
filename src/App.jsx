@@ -9,12 +9,12 @@ import 'animate.css/animate.min.css'
 import PubSub from 'pubsub-js';
 
 //componentes
-import Login from './Comp/Login.jsx';
-import Navbar from './Comp/Navbar.jsx';
+import Login from './Comp/Authentication/Login.jsx';
+import Navbar from './Comp/Common/Navbar.jsx';
 import Main from './Comp/Main.jsx';
-import Sidenav from './Comp/Sidenav.jsx';
-import CerrarSesion from './Comp/CerrarSesion.jsx';
-import Snackbar from './Comp/Snackbar.jsx';
+import Sidenav from './Comp/Common/Sidenav.jsx';
+import CerrarSesion from './Comp/Authentication/CerrarSesion.jsx';
+import Snackbar from './Comp/Common/Snackbar.jsx';
 import Pruebas from './Comp/Prueba/Main.jsx';
 import AsistentesVirtuales from './Comp/AsistenteVirtual/Main.jsx';
 

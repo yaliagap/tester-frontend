@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Api from '../../js/Api.js';
-import Loading from '../Loading.jsx';
+import Loading from '../Common/Loading.jsx';
 import SweetAlert from 'sweetalert2-react';
 
 export default class Listar extends Component{
@@ -31,6 +31,9 @@ export default class Listar extends Component{
 		data.append('id', id);
 		this.setState({dataDelete:data});	
 		this.setState({showAlert:true});	
+	}
+	edit(id, e) {
+		this.props.handlerEdit(id);
 	}
 	confirmDelete() {
 		this.setState({showAlert:false});	
@@ -69,6 +72,9 @@ export default class Listar extends Component{
 												<td>{el.password}</td>
 												<td>{el.workspace_id}</td>
 												<td>
+													<button className="transparent deleteButton" onClick={(e)=>this.edit(el.id, e)}>
+														<span><i className="material-icons">edit</i></span>
+													</button>
 													<button className="transparent deleteButton" onClick={(e)=>this.delete(el.id, e)}>
 														<span><i className="material-icons">delete</i></span>
 													</button>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router';
-import Api from '../js/Api.js';
-import Cookie from '../js/Cookie.js';
-import Loading from './Loading.jsx';
+import Api from '../../js/Api.js';
+import Cookie from '../../js/Cookie.js';
+import Loading from '../Common/Loading.jsx';
 
 class Login extends Component{
 	constructor(props){

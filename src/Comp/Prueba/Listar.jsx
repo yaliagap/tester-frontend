@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import M from 'materialize-css/dist/js/materialize.min.js'
+import M from 'materialize-css/dist/js/materialize.min.js';
 import {HorizontalBar} from 'react-chartjs-2';
 import {Doughnut} from 'react-chartjs-2';
 import { Chart } from 'react-chartjs-2';

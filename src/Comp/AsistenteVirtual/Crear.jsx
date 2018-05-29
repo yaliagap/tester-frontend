@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Api from '../../js/Api.js';
-import Loading from '../Loading.jsx';
-
+import Loading from '../Common/Loading.jsx';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 export default class Crear extends Component{
 	constructor(props){
@@ -10,6 +10,7 @@ export default class Crear extends Component{
 	}
 	componentDidMount(){
 		this.toggle(this.props.show);
+		M.updateTextFields();
 	}
 	toggle(show){
 		if (show===true) {
@@ -26,6 +27,7 @@ export default class Crear extends Component{
 		data.append('nombre', this.nombre.value);
 		data.append('username', this.username.value);
 		data.append('password', this.password.value);
+		data.append('variable', this.variable.value);
 		data.append('workspace_id', this.workspace_id.value);
 		this.setState({loading:true});
 		Api.post('/bots/save',data,true)
@@ -40,6 +42,7 @@ export default class Crear extends Component{
 				this.username = "";
 				this.password = "";
 				this.workspace_id = "";
+				this.variable = "";
 				this.props.handlerSubmit(e);
 				document.getElementById("crearAsistente").reset();
 			}
@@ -68,6 +71,10 @@ export default class Crear extends Component{
 				  	<div className="input-field col s12 cognitiva-color">
 		          	  <input id="workspace_id" name="workspace_id" type="text" ref={(ref) => { this.workspace_id = ref; }} />
 					  <label htmlFor="workspace_id">Workspace ID</label>
+				  	</div>
+				  	<div className="input-field col s12 cognitiva-color">
+		          	  <input id="variable" name="variable" type="text" ref={(ref) => { this.variable = ref; }} defaultValue="case" />
+					  <label htmlFor="variable">Variable de Contexto (Se comparará al momento de correr las pruebas)</label>
 				  	</div>
 					<div className="input-field col s12">
 					  <button className="btn-large waves-effect waves-light cognitiva-blue" type="submit" name="action">Agregar Asistente</button>

@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js'
 import Api from '../../js/Api.js';
-import Loading from '../Loading.jsx';
+import Loading from '../Common/Loading.jsx';
 
 export default class Crear extends Component{
 	constructor(props){
 		super(props);
 		this.state = {}
-	}
-	componentWillMount() {
-		
 	}
 	componentDidMount(){
 		this.toggle(this.props.show);
