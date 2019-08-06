@@ -1,7 +1,7 @@
 import Cookie from './Cookie.js';
 
 const Api = {
-	url: process.env.REACT_APP_API_URL,
+	url: 'http://localhost:4000',
 	serialize: function(obj){
 		var str = [];
 		for (var p in obj){

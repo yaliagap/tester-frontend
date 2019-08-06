@@ -15,6 +15,7 @@ export default class Main extends Component {
 		Api.get('/bots',true)
 		.then(function (data) {
 			if (data.error) {
+				console.log('error');
 				window.location = '/cerrar-sesion';
 			} else {
 				this.setState({asistentes:data});
